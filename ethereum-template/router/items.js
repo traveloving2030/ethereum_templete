@@ -19,25 +19,14 @@ router.get('/', function (req, res, next) {
 // create
 
 router.post('/', function (req, res, next) {
-  console.log(smartContract);
-  const pronumber = req.body.pronumber;
-  const proname = req.body.name;
-  const proloc = req.body.proloc;
+  //  console.log(req.session.account);
 
-  smartContract.methods.addProStru(
-    proname,
-    proloc,
-    pronumber,
-    { from: req.session.account, gas: 2000000 },
-    (err, result) => {
-      if (!err) {
-        alert('트랜잭션이 성공적으로 전송되었습니다.\n' + result);
-        // res.redirect("/items")
-        res.render('items', { title: 'item', pro_name: pronumber, pro_loc: proloc })
-      }
-    }
-  );
-
+  smartContract.methods.addProStru(req.body.proname,req.body.proloc,req.body.pronumber).send({
+      from: req.session.account, 
+      gas: 2000000}).then(function(receipt){
+        // console.log(receipt);
+        res.render('items', { title: 'item', pro_name: req.body.pronumber, pro_loc: req.body.proloc });
+      });
 
 })
 
