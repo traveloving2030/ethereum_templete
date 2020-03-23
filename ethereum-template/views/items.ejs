@@ -59,24 +59,28 @@
                     <a href="/new"><button class="btn btn-info"> 새 아이템 추가하기</button></a>
              
             </div>
-            
-            <div class="row">
-                
-                <div class="col-lg-4">
-                  
-                        <div class="card">
-                            <div class="card-image"></div>
-                            <% if(pro_name==null && pro_loc==null){ %>
-                                <h1>아무것도 없음</h1>
-                            <% }else{ %>
-                                <div class="card-title"><%= pro_name %></div>
-                                <div class="card-comment"><%= pro_loc %> </div>
-                            <% } %>
 
-                        </div>
-                    </a>
-                </div>
-              
+            <div class="row">
+                <% if (item !== null){item.forEach((item, index)=>{ 
+                    var item_index=index+1;  %>
+                        <div class="col-lg-4">
+                            <a href="/items/<%=item_index%>">
+                                <div class="card">
+                                    <div class="card-image"></div>
+                                    <% if(item[0]==null && item[1]==null){ %>
+                                        <h1>아무것도 없음</h1>
+                                    <% }else{ %>
+                                        <div class="card-title"><%= item[0] %></div>
+                                        <div class="card-comment"><%= item[1] %> </div>
+                                    <% } %>
+        
+                                </div>
+                            </a>
+                        </div>      
+                        <%  })} %>
+          
+
+               
             </div>
         </div>
     </body>
