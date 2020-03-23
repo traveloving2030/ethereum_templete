@@ -11,7 +11,7 @@ const HOST = '0.0.0.0';
 
 // initialize session
 app.use(session({
-    secret: 'HyperShield',
+    secret: 'ProductDapp',
     resave: true,
     saveUninitialized: true
    }));
