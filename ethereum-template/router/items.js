@@ -63,13 +63,8 @@ router.get('/:id', function(req, res, next){
     //     if(err) return console.log(err);
     //     res.render('show', {title: "item 조회", item: item, user: req.user})
     // })
-    smartContract.methods.product().watch((err,result)=>{
-      if(!err){
-        console.log(result);
         res.render('show', {title: "item 조회" ,itemId: req.params.id})
-      }
-     
-    })
+
 })
 
 

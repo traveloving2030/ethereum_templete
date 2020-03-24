@@ -34,4 +34,6 @@ contract ProductContract {
     function getProductStruct(uint _index) public view returns (string memory, string memory, uint, uint) {
         return (productes[_index].productName, productes[_index].locaton, productes[_index].number, productes[_index].timestamp);
     }
+
+    function rate
 }
