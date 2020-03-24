@@ -51,7 +51,7 @@
             </div><!-- /.container-fluid -->
         </nav>
         
-        <% if(user == null){ %>
+        <% if(account == null){ %>
             <div class="section">
                 <div class="header">
                     <h1> Sorry </h1>
@@ -62,26 +62,26 @@
         <% } else{ %>
             <div class="align-center">
                 <div class="show-section">
-                    <div class="item-name"> <%= item.name %></div>
-                    <div class="item-comment"> <%= item.comment %></div>
+                    <div class="item-name"> <%= item[1]%></div>
+                    <div class="item-comment"> <%= item[2]%></div>
                     <div class="item-sub">
-                    <div class="item-user"> <%= item.user %></div>
-                    <% if(user.email == item.user){ %>
-                        <div class="item-button"><a href="/items/delete/<%= item.itemId %>">삭제하기</a></div>
-                        <div class="item-button"><a href="/items/update/<%= item.itemId %>">수정하기</a></div>
+                    <div class="item-user"> <%= item[0]%></div>
                     </div>
-                    <% } %>
                     <hr>
-                    <div class="item-detail"> <%= item.detail %></div>
-                    <% if(user.email == item.user){ %>
+                    <div class="item-detail"> <%= item[4] %></div>
+
+                    <!-- -------------------------------------------------주석지우고 다시 이어서 하기-------------------------------------- -->
+
+                    <!-- <% if(account == item[0]){ %>
                         <a href="/rate/<%= item.itemId %>"><button class="btn btn-warning" style="margin-top: 50px; float: right;">팀원 평가하러 가기</button></a>
-                    <% } %>
+                    <% } %> -->
+                    
                 </div>
             </div>
 
             <div class="align-center">
                 <div class="admin-section">
-                    <% if(user.email == item.user){ %>
+                    <% if(account == item.user){ %>
                         <h4> 프로젝트 참가신청 목록 </h4>
                         <table class="table table-striped" style="margin-top: 30px;">
                             <tr>

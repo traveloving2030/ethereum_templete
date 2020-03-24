@@ -25,10 +25,7 @@ router.get('/', function (req, res, next) {
     
 
     setTimeout(()=>{
-      // console.log(pro_array);
-      // for(let i=0; i<pro_array.length; i++){
-      //   console.log(pro_array[i][0]);
-      // }
+
       pro_array.forEach(function(element, index, array){
         
         console.log(element[0]);
@@ -36,7 +33,7 @@ router.get('/', function (req, res, next) {
       
     
 
-      res.render('items', { title: 'item', pro_name: 'nothing', pro_loc: 'nothing', total_num:total_num, item:pro_array });
+      res.render('items', { title: 'item', item:pro_array });
     },100);
     
     
@@ -63,14 +60,17 @@ router.post('/', function (req, res, next) {
 // show
 router.get('/:id', function(req, res, next){
     console.log("[SHOW GET]item id: " + req.params.id);
-    // Item.findOne({ itemId: req.params.id }, (err, item)=>{
-    //     if(err) return console.log(err);
-    //     res.render('show', {title: "item 조회", item: item, user: req.user})
-    // })
-        res.render('show', {title: "item 조회" ,itemId: req.params.id})
-
-})
-
+    var index=req.params.id-1;
+    var proInfo;
+        smartContract.methods.getProductStruct(index).call({from: req.session.account}).then(function(pro_info){
+          proInfo=pro_info;
+        })
+  
+      setTimeout(()=>{
+        res.render('show', { title: 'item 조회', item:proInfo, account: req.session.account});
+      },100);
+  
+    })
 
 
 

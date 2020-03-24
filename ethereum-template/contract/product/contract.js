@@ -2,12 +2,16 @@
 
 //access our local copy to contract deployed on rinkeby testnet
 //use your own contract address
-const address = '0x54331afca35C1DeEAd4AA234e982baFe3E8E1C50';
+const address = '0xc91bb7236aD0e1C8DAD57657be41ABD075F482De';
 //use the ABI from your contract
 const abi = [
 	{
 		"constant": false,
 		"inputs": [
+			{
+				"name": "_proCreator",
+				"type": "address"
+			},
 			{
 				"name": "_firstString",
 				"type": "string"
@@ -22,6 +26,28 @@ const abi = [
 			}
 		],
 		"name": "addProStru",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_num",
+				"type": "uint256"
+			},
+			{
+				"name": "_buyer",
+				"type": "address"
+			},
+			{
+				"name": "_status",
+				"type": "bool"
+			}
+		],
+		"name": "buyProduct",
 		"outputs": [],
 		"payable": false,
 		"stateMutability": "nonpayable",
@@ -57,6 +83,20 @@ const abi = [
 	{
 		"constant": true,
 		"inputs": [],
+		"name": "getNumOfPerchaes",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
 		"name": "getNumOfProducts",
 		"outputs": [
 			{
@@ -76,8 +116,39 @@ const abi = [
 				"type": "uint256"
 			}
 		],
+		"name": "getPerchaseInfo",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			},
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
 		"name": "getProductStruct",
 		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			},
 			{
 				"name": "",
 				"type": "string"
@@ -110,6 +181,10 @@ const abi = [
 		"name": "productes",
 		"outputs": [
 			{
+				"name": "creator",
+				"type": "address"
+			},
+			{
 				"name": "productName",
 				"type": "string"
 			},
@@ -124,6 +199,33 @@ const abi = [
 			{
 				"name": "timestamp",
 				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "purchaes",
+		"outputs": [
+			{
+				"name": "buy_num",
+				"type": "uint256"
+			},
+			{
+				"name": "buyer",
+				"type": "address"
+			},
+			{
+				"name": "status",
+				"type": "bool"
 			}
 		],
 		"payable": false,

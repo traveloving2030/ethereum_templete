@@ -67,11 +67,11 @@
                             <a href="/items/<%=item_index%>">
                                 <div class="card">
                                     <div class="card-image"></div>
-                                    <% if(item[0]==null && item[1]==null){ %>
+                                    <% if(item[1]==null && item[2]==null){ %>
                                         <h1>아무것도 없음</h1>
                                     <% }else{ %>
-                                        <div class="card-title"><%= item[0] %></div>
-                                        <div class="card-comment"><%= item[1] %> </div>
+                                        <div class="card-title"><%= item[1] %></div>
+                                        <div class="card-comment"><%= item[2] %> </div>
                                     <% } %>
         
                                 </div>
