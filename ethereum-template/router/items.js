@@ -22,6 +22,8 @@ router.get('/', function (req, res, next) {
       })
     }
 
+    
+
     setTimeout(()=>{
       // console.log(pro_array);
       // for(let i=0; i<pro_array.length; i++){
@@ -31,6 +33,8 @@ router.get('/', function (req, res, next) {
         
         console.log(element[0]);
       })
+      
+    
 
       res.render('items', { title: 'item', pro_name: 'nothing', pro_loc: 'nothing', total_num:total_num, item:pro_array });
     },100);
@@ -38,7 +42,7 @@ router.get('/', function (req, res, next) {
     
   
 })
- 
+
 })
 
 

@@ -28,7 +28,7 @@ contract ProductContract {
     myStruct[] public productes;
     Buy[] public purchaes;
 
-    function addProStru (address memory _proCreator, string memory _firstString, string memory _secondString, uint _initNumber) public {
+    function addProStru (address _proCreator, string memory _firstString, string memory _secondString, uint _initNumber) public {
         productes.push(myStruct(_proCreator, _firstString, _secondString, _initNumber, block.timestamp)) -1;
         
         numberOfProducts++;
@@ -41,12 +41,12 @@ contract ProductContract {
     }
 
     //번호에 해당하는 제품의 이름을 리턴합니다.
-    function getProductStruct(uint _index) public view returns (address memory, string memory, string memory, uint, uint) {
+    function getProductStruct(uint _index) public view returns (address , string memory, string memory, uint, uint) {
         return (productes[_index].creator, productes[_index].productName, productes[_index].locaton, productes[_index].number, productes[_index].timestamp);
     }
 
-    function buyProduct(uint memory _num, address memory _buyer, bool memory _status){
-        purchases.push(Buy(_num, _buyer, _status))-1;
+    function buyProduct(uint _num, address _buyer, bool _status) public {
+        purchaes.push(Buy(_num, _buyer, _status))-1;
         numberOfPerchaes++;
     }
 
@@ -54,8 +54,8 @@ contract ProductContract {
         return numberOfPerchaes;
     }
 
-    function getPerchaseInfo(uint _index) public view returns (uint memory, address memory, bool memory){
-        return (purchases[_index].buy_num, purchases[_index].buyer, purchases[_index].status);
+    function getPerchaseInfo(uint _index) public view returns (uint, address, bool){
+        return (purchaes[_index].buy_num, purchaes[_index].buyer, purchaes[_index].status);
     }
     
     // apply까지 한 후 생각!
