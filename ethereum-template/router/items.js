@@ -49,7 +49,7 @@ router.get('/', function (req, res, next) {
 router.post('/', function (req, res, next) {
   //  console.log(req.session.account);
 
-  smartContract.methods.addProStru(req.body.proname,req.body.proloc,req.body.pronumber).send({
+  smartContract.methods.addProStru(req.session.account,req.body.proname,req.body.proloc,req.body.pronumber).send({
       from: req.session.account, 
       gas: 2000000}).then(function(receipt){
         // console.log(receipt);
