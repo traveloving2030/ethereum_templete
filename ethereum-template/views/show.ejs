@@ -62,13 +62,12 @@
         <% } else{ %>
             <div class="align-center">
                 <div class="show-section">
-                    <div class="item-name"> <%= item[1]%></div>
-                    <div class="item-comment"> <%= item[2]%></div>
-                    <div class="item-sub">
-                    <div class="item-user"> <%= item[0]%></div>
+                    <div class="item-name"> 제품명 : <%= item[1]%></div><hr>
+                    <div class="item-comment"> 원산지 : <%= item[2]%></div><hr>
+                    <div class="item-sub"> 제품 갯수 : <%= item[3]%></div><hr>
+                    <div class="item-user"> 등록한 사람계정 : <%= item[0]%></div>
                     </div>
-                    <hr>
-                    <div class="item-detail"> <%= item[4] %></div>
+                
 
                     <!-- -------------------------------------------------주석지우고 다시 이어서 하기-------------------------------------- -->
 
@@ -79,53 +78,7 @@
                 </div>
             </div>
 
-            <div class="align-center">
-                <div class="admin-section">
-                    <% if(account == item.user){ %>
-                        <h4> 프로젝트 참가신청 목록 </h4>
-                        <table class="table table-striped" style="margin-top: 30px;">
-                            <tr>
-                                <th>#</th>
-                                <th>내용</th>
-                                <th>신청자</th>
-                                <th>상태</th>
-                                <th>수락하기</th>
-                            </tr>
-                            <% item.applies.forEach(function (apply, index){ %>
-                                <tr>
-                                    <td><%= index + 1 %></td>
-                                    <td><%= apply.body %></td>
-                                    <td><%= apply.author %></td>
-                                    <td><%= apply.status %></td>
-                                    <form action="/items/<%= item.itemId %>/admit" method="POST">
-                                        <input type="hidden" value="<%= item.itemId %>" name="itemId">
-                                        <% if(apply.status == "matched"){ %>
-                                            <td>이미 수락되었습니다.</td>
-                                        <% }else{ %>
-                                            <td><button type="submit" class="btn btn-primary" name="index" value="<%= index %>" id="admit"> 수락하기 </button></td>
-                                        <% } %>
-                                    </form>
-                                </tr>                    
-                            <% }) %>
-                        </table>
-                    <% }else{ %>
-                        <h4>프로젝트 참가 신청하기</h4>
-                        <form action="/items/<%= item.itemId %>/applies" method="post">
-                            <input type="hidden" name="user" value="<%= user.email %>">
-                            <textarea type="text" class="newapply-form" rows="5" name="apply" placeholder="신청서를 입력해주세요"></textarea>
-                            <div class="align-center">
-                                <button class="btn btn-info newapply-btn" type="submit">신청하기</button>
-                            </div>
-                        </form>  
-                    <% } %>
-                </div>
-            </div>
         <% } %>
     </body>
 </html> 
 
-<script>
-    $("#admit").click(()=>{
-        alert("수락했습니다!");
-    })
-</script>

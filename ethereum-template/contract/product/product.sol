@@ -2,7 +2,7 @@ pragma solidity 0.5.8;
 
 contract ProductContract {
     uint8 numberOfProducts; // 총 제품의 수입니다.
-    uint8 numberOfPerchaes;
+   
 
     struct myStruct {
         address creator;
@@ -13,7 +13,6 @@ contract ProductContract {
     }
 
     struct Buy{
-        uint buy_num;
         address buyer;
         bool status;
     }
@@ -26,7 +25,7 @@ contract ProductContract {
     );
 
     myStruct[] public productes;
-    Buy[] public purchaes;
+    Buy[] public purchase;
 
     function addProStru (address _proCreator, string memory _firstString, string memory _secondString, uint _initNumber) public {
         productes.push(myStruct(_proCreator, _firstString, _secondString, _initNumber, block.timestamp)) -1;
@@ -45,21 +44,15 @@ contract ProductContract {
         return (productes[_index].creator, productes[_index].productName, productes[_index].locaton, productes[_index].number, productes[_index].timestamp);
     }
 
-    function buyProduct(uint _num, address _buyer, bool _status) public {
-        purchaes.push(Buy(_num, _buyer, _status))-1;
-        numberOfPerchaes++;
+    function buyProduct(address _buyer, bool _status) public payable {
+        require(msg.value >= 1 ether);
+        purchase.push(Buy(_buyer, _status))-1;
+   
     }
 
-    function getNumOfPerchaes() public view returns(uint8){
-        return numberOfPerchaes;
-    }
-
-    function getPerchaseInfo(uint _index) public view returns (uint, address, bool){
-        return (purchaes[_index].buy_num, purchaes[_index].buyer, purchaes[_index].status);
+    function getPurchaseInfo(uint _index) public view returns (address, bool){
+        return (purchase[_index].buyer, purchase[_index].status);
     }
     
-    // apply까지 한 후 생각!
-    // function rateProduct(string _proName, uint _score) public{
-        
-    // }
+ 
 }

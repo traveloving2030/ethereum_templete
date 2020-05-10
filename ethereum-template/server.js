@@ -43,10 +43,10 @@ app.use('/', indexRouter);
 app.use('/mainPage', indexRouter);
 app.use('/login', loginRouter);
 app.use('/loginProcess', loginRouter);
-
 app.use('/logout', logoutRouter);
 app.use('/items', itemsRouter);
 app.use('/new', newRouter);
+app.use('/show', itemsRouter);
 // app.use('/rate', rateRouter);
 // app.use('/mypage', mypageRouter);
 

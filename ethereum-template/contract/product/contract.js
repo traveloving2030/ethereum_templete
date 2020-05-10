@@ -2,7 +2,7 @@
 
 //access our local copy to contract deployed on rinkeby testnet
 //use your own contract address
-const address = '0x761ABaE5B14Afbbd43e1e2c5EF7CB5dD34ab1A2C';
+const address = '0x73065abeC098F56331f656f8d285d244218D315f';
 //use the ABI from your contract
 const abi = [
 	{
@@ -35,10 +35,6 @@ const abi = [
 		"constant": false,
 		"inputs": [
 			{
-				"name": "_num",
-				"type": "uint256"
-			},
-			{
 				"name": "_buyer",
 				"type": "address"
 			},
@@ -49,8 +45,8 @@ const abi = [
 		],
 		"name": "buyProduct",
 		"outputs": [],
-		"payable": false,
-		"stateMutability": "nonpayable",
+		"payable": true,
+		"stateMutability": "payable",
 		"type": "function"
 	},
 	{
@@ -83,52 +79,11 @@ const abi = [
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "getNumOfPerchaes",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint8"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
 		"name": "getNumOfProducts",
 		"outputs": [
 			{
 				"name": "",
 				"type": "uint8"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "_index",
-				"type": "uint256"
-			}
-		],
-		"name": "getPerchaseInfo",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			},
-			{
-				"name": "",
-				"type": "address"
-			},
-			{
-				"name": "",
-				"type": "bool"
 			}
 		],
 		"payable": false,
@@ -164,6 +119,29 @@ const abi = [
 			{
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "getPurchaseInfo",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			},
+			{
+				"name": "",
+				"type": "bool"
 			}
 		],
 		"payable": false,
@@ -213,12 +191,8 @@ const abi = [
 				"type": "uint256"
 			}
 		],
-		"name": "purchaes",
+		"name": "purchase",
 		"outputs": [
-			{
-				"name": "buy_num",
-				"type": "uint256"
-			},
 			{
 				"name": "buyer",
 				"type": "address"

@@ -26,8 +26,7 @@ router.get('/', function (req, res, next) {
       res.render('items', { title: 'item', item:pro_array });
     },1000);
     
-    
-  
+
 })
 
 })
