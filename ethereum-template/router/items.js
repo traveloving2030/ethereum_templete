@@ -43,6 +43,7 @@ router.post('/', function (req, res, next) {
       from: req.session.account, 
       gas: 2000000}).then(function(receipt){
 
+        res.redirect('/items');
       });
 })
 
