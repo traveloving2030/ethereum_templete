@@ -22,19 +22,9 @@ router.get('/', function (req, res, next) {
       })
     }
 
-    
-
     setTimeout(()=>{
-
-      pro_array.forEach(function(element, index, array){
-        
-        console.log(element[0]);
-      })
-      
-    
-
       res.render('items', { title: 'item', item:pro_array });
-    },100);
+    },1000);
     
     
   
@@ -52,8 +42,7 @@ router.post('/', function (req, res, next) {
   smartContract.methods.addProStru(req.session.account,req.body.proname,req.body.proloc,req.body.pronumber).send({
       from: req.session.account, 
       gas: 2000000}).then(function(receipt){
-        // console.log(receipt);
-        res.render('items', { title: 'item', pro_name: req.body.pronumber, pro_loc: req.body.proloc });
+
       });
 })
 
