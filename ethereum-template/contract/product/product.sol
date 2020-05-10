@@ -13,8 +13,9 @@ contract ProductContract {
     }
 
     struct Buy{
+        address owner;
         address buyer;
-        bool status;
+        uint money;
     }
 
     event product (
@@ -44,14 +45,14 @@ contract ProductContract {
         return (productes[_index].creator, productes[_index].productName, productes[_index].locaton, productes[_index].number, productes[_index].timestamp);
     }
 
-    function buyProduct(address _buyer, bool _status) public payable {
-        require(msg.value >= 1 ether);
-        purchase.push(Buy(_buyer, _status))-1;
+    function buyProduct(address _owner, address _buyer, uint _money) public payable {
+        require(_money >= 1 ether);
+        purchase.push(Buy(_owner, _buyer, _money))-1;
    
     }
 
-    function getPurchaseInfo(uint _index) public view returns (address, bool){
-        return (purchase[_index].buyer, purchase[_index].status);
+    function getPurchaseInfo(uint _index) public view returns (address, address, uint){
+        return (purchase[_index].owner, purchase[_index].buyer, purchase[_index].money);
     }
     
  

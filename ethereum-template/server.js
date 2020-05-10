@@ -32,11 +32,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var indexRouter = require('./router/mainPage');
 var loginRouter = require('./router/login');
 
-
 var logoutRouter = require('./router/logout');
 var itemsRouter = require('./router/items');
 var newRouter = require('./router/new');
-// var rateRouter = require('./router/rate');
+var buyRouter = require('./router/buy');
 // var mypageRouter = require('./router/mypage');
 
 app.use('/', indexRouter);
@@ -47,6 +46,7 @@ app.use('/logout', logoutRouter);
 app.use('/items', itemsRouter);
 app.use('/new', newRouter);
 app.use('/show', itemsRouter);
+app.use('/buy', buyRouter);
 // app.use('/rate', rateRouter);
 // app.use('/mypage', mypageRouter);
 
