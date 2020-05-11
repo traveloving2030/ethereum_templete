@@ -17,7 +17,8 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res) {
-    var func1 = web3.eth.getAccounts().then(function (accounts) {
+    
+        web3.eth.getAccounts().then(function (accounts) {
         var i;
         for (i = 0; i < accounts.length; i++) {
             if (req.body.eth_account == accounts[i]) {
@@ -26,13 +27,19 @@ router.post('/', function (req, res) {
                
             }
         }
-
-        if (i == accounts.length) {
+        try{
+            if (i == accounts.length) {
             res.redirect('/login');
+        }
+        }catch(e){
+            console.log(e)
         }
 
 
+
     })
+
+
 
 
 });

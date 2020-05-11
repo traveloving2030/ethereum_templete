@@ -2,7 +2,7 @@
 
 //access our local copy to contract deployed on rinkeby testnet
 //use your own contract address
-const address = '0x46554f5a76feE90fF73Cfda592cDB503713deB95';
+const address = '0x7d63F9f0188D469EE7F5B6804a5a4B2d4b0ab164';
 //use the ABI from your contract
 const abi = [
 	{
@@ -41,10 +41,6 @@ const abi = [
 			{
 				"name": "_buyer",
 				"type": "address"
-			},
-			{
-				"name": "_money",
-				"type": "uint256"
 			}
 		],
 		"name": "buyProduct",
@@ -146,10 +142,6 @@ const abi = [
 			{
 				"name": "",
 				"type": "address"
-			},
-			{
-				"name": "",
-				"type": "uint256"
 			}
 		],
 		"payable": false,
@@ -208,10 +200,6 @@ const abi = [
 			{
 				"name": "buyer",
 				"type": "address"
-			},
-			{
-				"name": "money",
-				"type": "uint256"
 			}
 		],
 		"payable": false,
